@@ -2,6 +2,7 @@ import {
   formatCreatorInfoData,
   formatInsightsData,
   formatKeyStatisticsData,
+  formatChartData,
 } from "@/lib/formatters/data-objects";
 
 export async function fetchBaseData() {
@@ -19,14 +20,7 @@ export async function fetchBaseData() {
     const infoData = formatCreatorInfoData(data);
     const keyStatisticsData = formatKeyStatisticsData(data);
     const insightsData = formatInsightsData(data, data2);
-    const statsHistoryData = data2.data;
-
-    console.log(data);
-    console.log(data2);
-    console.log(infoData);
-    console.log(keyStatisticsData);
-    console.log(insightsData);
-    console.log(statsHistoryData);
+    const statsHistoryData = formatChartData(data2.data);
 
     return {
       infoData,

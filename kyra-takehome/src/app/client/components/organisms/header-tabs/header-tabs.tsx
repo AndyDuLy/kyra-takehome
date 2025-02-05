@@ -15,7 +15,7 @@ export default function HeaderTabs({
   return (
     <RowContainer className={styles.headerTabsSection}>
       {headerTabs.map((tab) => (
-        <h1
+        <h2
           key={tab}
           className={`${styles.headerTab} ${
             activeTab === tab ? styles.active : ""
@@ -23,7 +23,7 @@ export default function HeaderTabs({
           onClick={() => setActiveTab(tab)}
         >
           {tab}
-        </h1>
+        </h2>
       ))}
     </RowContainer>
   );

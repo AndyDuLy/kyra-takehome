@@ -46,7 +46,7 @@
 
   .accountInfoStatsSection {
     display: flex;
-    gap: 4px;
+    gap: 10px;
     flex-direction: row;
     justify-content: space-evenly;
   }

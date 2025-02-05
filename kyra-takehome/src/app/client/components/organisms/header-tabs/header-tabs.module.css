@@ -4,7 +4,8 @@
   justify-content: center;
   width: 100%;
   row-gap: 8px;
-  column-gap: clamp(4px, 6vw, 64px);
+  column-gap: clamp(4px, 4vw, 32px);
+  color: var(--subheadings-color);
   padding-bottom: 2px;
   border-bottom: 1px solid var(--borders-color);
 }
@@ -12,7 +13,7 @@
 .headerTab {
   cursor: pointer;
   font-weight: var(--thin-font-weight);
-  font-size: 12px;
+  font-size: 0.7rem;
   white-space: nowrap;
   min-width: fit-content;
   max-width: 100%;
@@ -23,9 +24,17 @@
   transition: color 0.5s ease-in-out;
 }
 
+.headerTabs::-webkit-scrollbar {
+  display: none;
+}
+
 @media (min-width: 768px) {
   .headerTab {
     font-size: 16px;
+  }
+
+  .headerTabsSection {
+    column-gap: clamp(4px, 4vw, 64px);
   }
 }
 

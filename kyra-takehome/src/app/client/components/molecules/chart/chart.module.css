@@ -1,0 +1,30 @@
+.chart {
+  width: 100%;
+  margin: 1rem;
+  padding: 0;
+  border-radius: var(--borders-border-radius);
+  border: 1px solid var(--borders-color);
+  position: relative;
+}
+
+@media (max-width: 768px) {
+  .chart {
+    height: 300px;
+  }
+}
+
+@media (min-width: 768px) {
+  .chart {
+    height: 400px;
+  }
+}
+
+.pillContainer {
+  position: absolute;
+  right: 20;
+  top: 10;
+  z-index: 10;
+  width: fit-content;
+  padding: 2px;
+  font-size: 12px;
+}

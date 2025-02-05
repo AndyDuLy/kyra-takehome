@@ -9,20 +9,22 @@ import FullScreenSpinner from "@/lib/utils/spinner";
 import { CreatorInfoData } from "@/lib/types/creator-info";
 import { KeyStatisticsData } from "@/lib/types/key-statistics-data";
 import { Statistic } from "@/lib/types/statistic";
+import { DataPoint } from "@/lib/types/chart-data";
 import { fetchBaseData } from "@/app/api-lib/utils/fetchBaseData";
 
 import CreatorInfo from "@/app/client/components/organisms/creator-info/creator-info";
 import KeyStatistics from "@/app/client/components/organisms/key-statistics/key-statistics";
 import HeaderTabs from "@/app/client/components/organisms/header-tabs/header-tabs";
 import AccountInfo from "@/app/client/components/organisms/account-info/account-info";
+import Chart from "@/app/client/components/molecules/chart/chart";
 
 export default function HomePage() {
   const [infoData, setInfoData] = useState<CreatorInfoData | null>(null);
+  const [chartData, setChartData] = useState<DataPoint[]>([]);
   const [keyStatisticsData, setKeyStatisticsData] = useState<
     KeyStatisticsData[]
   >([]);
   const [insightsData, setInsightsData] = useState<Statistic[]>([]);
-  const [statsHistoryData, setStatsHistoryData] = useState(null);
   const [error, setError] = useState("");
 
   const [activeTab, setActiveTab] = useState("Account info");
@@ -36,8 +38,7 @@ export default function HomePage() {
         setInfoData(infoData);
         setKeyStatisticsData(keyStatisticsData);
         setInsightsData(insightsData);
-
-        setStatsHistoryData(statsHistoryData);
+        setChartData(statsHistoryData);
       } catch (err) {
         setError(
           err instanceof Error ? err.message : "An unknown error occurred"
@@ -59,6 +60,8 @@ export default function HomePage() {
       {activeTab === "Account info" && (
         <AccountInfo infoData={infoData} insightsData={insightsData} />
       )}
+
+      <Chart chartData={chartData} />
     </div>
   );
 }

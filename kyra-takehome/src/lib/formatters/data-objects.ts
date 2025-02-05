@@ -1,5 +1,3 @@
-import { countries } from "../consts/countries";
-import { languages } from "../consts/languages";
 import {
   formatNumber,
   formatNumberTruncateDecimals,
@@ -8,9 +6,13 @@ import {
   formatPercentageRaise,
 } from "./numbers";
 
-import { CreatorInfoData } from "../types/creator-info";
-import { KeyStatisticsData } from "../types/key-statistics-data";
+import { CreatorInfoData } from "@/lib/types/creator-info";
+import { KeyStatisticsData } from "@/lib/types/key-statistics-data";
 import { Statistic } from "@/lib/types/statistic";
+import { DataPoint } from "@/lib/types/chart-data";
+import { formatDateNoYear } from "@/lib/formatters/dates";
+import { countries } from "@/lib/consts/countries";
+import { languages } from "@/lib/consts/languages";
 
 export function formatCreatorInfoData(data: any) {
   const creatorInfoData: CreatorInfoData = {
@@ -95,4 +97,22 @@ export function formatInsightsData(baseData: any, trendData: any) {
   ];
 
   return insightsData;
+}
+
+export function formatChartData(data: any) {
+  console.log(data);
+
+  let historyPoints: DataPoint[] = [];
+
+  data.historyPoints.map((point: any) => {
+    let currentDataPoint: DataPoint = {
+      date: formatDateNoYear(point.createdAt),
+      likesCount: point.likesCount,
+      followersCount: point.followersCount,
+    };
+
+    historyPoints.push(currentDataPoint);
+  });
+
+  return historyPoints;
 }
