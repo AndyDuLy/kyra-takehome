@@ -20,7 +20,7 @@ export default function CreatorInfo({ alt, infoData }: CreatorInfoProps) {
       <Image src={infoData.src} alt={alt} width={125} height={125} />
 
       <RowContainer>
-        <h1> {infoData.name} </h1>
+        <h1 className={styles.creatorInfoName}> {infoData.name} </h1>
         <Icon name="bookmark" color="var(--contrast-color)" />
         <Icon name="share" color="var(--contrast-color)" />
       </RowContainer>

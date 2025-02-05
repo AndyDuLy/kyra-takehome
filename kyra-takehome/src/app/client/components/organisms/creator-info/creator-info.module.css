@@ -3,4 +3,10 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  margin-bottom: 0px;
+}
+
+.creatorInfoName {
+  margin-top: 6px;
+  margin-bottom: 6px;
 }

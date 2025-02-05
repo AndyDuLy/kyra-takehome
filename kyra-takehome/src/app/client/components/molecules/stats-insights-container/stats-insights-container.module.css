@@ -1,0 +1,32 @@
+.statsInsightsContainer {
+  text-align: center;
+  padding: 4px;
+  min-width: max-content;
+  flex: 1;
+}
+
+.statisticType {
+  font-size: 12px;
+}
+
+.statisticValue {
+  font-size: 28px;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.statisticDifference {
+  color: var(--key-information-text-color);
+  display: flex;
+  gap: 4px;
+  font-size: 12px;
+  justify-content: center;
+  flex-direction: row;
+  align-items: center;
+  min-width: 100px;
+  min-height: 20px;
+}
+
+.statisticDifference.hidden {
+  color: var(--background-color);
+}

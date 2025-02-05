@@ -1,0 +1,57 @@
+.accountInfoStatsCard {
+  border-radius: var(--borders-border-radius);
+  border: 1px solid var(--borders-color);
+  padding: 0;
+}
+
+@media (min-width: 768px) {
+  .accountInfoStatsCard {
+    display: grid;
+    grid-template-columns: 0.5fr 10fr;
+    width: 100%;
+  }
+
+  .tiktokContainer {
+    border-bottom: 0;
+    border-radius: var(--borders-border-radius) var(--borders-border-radius) 0 0;
+  }
+
+  .instagramContainer {
+    border-top: 0;
+    border-radius: 0 0 var(--borders-border-radius) var(--borders-border-radius);
+  }
+
+  .accountInfoStatsCardIcon {
+    grid-column: 1;
+    grid-row: 1;
+    align-self: center;
+  }
+
+  .accountInfoStatsSection {
+    grid-column: 2;
+    grid-row: 1;
+
+    display: flex;
+    align-items: center;
+    align-content: center;
+    justify-content: space-evenly;
+    padding-top: 12px;
+  }
+}
+
+@media (max-width: 768px) {
+  .accountInfoStatsCard {
+    padding-top: 12px;
+  }
+
+  .accountInfoStatsSection {
+    display: flex;
+    gap: 4px;
+    flex-direction: row;
+    justify-content: space-evenly;
+  }
+
+  .instagramContainer {
+    margin-top: 12px;
+  }
+}

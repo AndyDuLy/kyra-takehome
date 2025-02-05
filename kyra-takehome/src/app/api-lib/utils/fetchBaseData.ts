@@ -1,5 +1,8 @@
-import { formatCreatorInfoData } from "@/lib/formatters/data-objects";
-import { formatKeyStatisticsData } from "@/lib/formatters/data-objects";
+import {
+  formatCreatorInfoData,
+  formatInsightsData,
+  formatKeyStatisticsData,
+} from "@/lib/formatters/data-objects";
 
 export async function fetchBaseData() {
   try {
@@ -15,13 +18,22 @@ export async function fetchBaseData() {
 
     const infoData = formatCreatorInfoData(data);
     const keyStatisticsData = formatKeyStatisticsData(data);
+    const insightsData = formatInsightsData(data, data2);
+    const statsHistoryData = data2.data;
 
     console.log(data);
     console.log(data2);
     console.log(infoData);
     console.log(keyStatisticsData);
+    console.log(insightsData);
+    console.log(statsHistoryData);
 
-    return { infoData, keyStatisticsData, statsHistoryData: data2.data };
+    return {
+      infoData,
+      keyStatisticsData,
+      insightsData,
+      statsHistoryData,
+    };
   } catch (err) {
     throw new Error(
       err instanceof Error ? err.message : "An unknown error occurred"

@@ -8,6 +8,7 @@ import { useEffect, useState } from "react";
 import FullScreenSpinner from "@/lib/utils/spinner";
 import { CreatorInfoData } from "@/lib/types/creator-info";
 import { KeyStatisticsData } from "@/lib/types/key-statistics-data";
+import { Statistic } from "@/lib/types/statistic";
 import { fetchBaseData } from "@/app/api-lib/utils/fetchBaseData";
 
 import CreatorInfo from "@/app/client/components/organisms/creator-info/creator-info";
@@ -20,6 +21,7 @@ export default function HomePage() {
   const [keyStatisticsData, setKeyStatisticsData] = useState<
     KeyStatisticsData[]
   >([]);
+  const [insightsData, setInsightsData] = useState<Statistic[]>([]);
   const [statsHistoryData, setStatsHistoryData] = useState(null);
   const [error, setError] = useState("");
 
@@ -28,11 +30,12 @@ export default function HomePage() {
   useEffect(() => {
     async function getData() {
       try {
-        const { infoData, keyStatisticsData, statsHistoryData } =
+        const { infoData, keyStatisticsData, insightsData, statsHistoryData } =
           await fetchBaseData();
 
         setInfoData(infoData);
         setKeyStatisticsData(keyStatisticsData);
+        setInsightsData(insightsData);
 
         setStatsHistoryData(statsHistoryData);
       } catch (err) {
@@ -52,7 +55,10 @@ export default function HomePage() {
       <CreatorInfo alt={infoData.name} infoData={infoData} />
       <KeyStatistics statisticsData={keyStatisticsData} />
       <HeaderTabs activeTab={activeTab} setActiveTab={setActiveTab} />
-      {activeTab === "Account info" && <AccountInfo infoData={infoData} />}
+
+      {activeTab === "Account info" && (
+        <AccountInfo infoData={infoData} insightsData={insightsData} />
+      )}
     </div>
   );
 }

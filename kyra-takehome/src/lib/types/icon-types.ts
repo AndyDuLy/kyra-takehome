@@ -6,4 +6,5 @@ export type IconName =
   | "language"
   | "redirect"
   | "bookmark"
-  | "share";
+  | "share"
+  | "arrowUp";

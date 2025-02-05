@@ -1,33 +1,43 @@
 import styles from "./account-info.module.css";
 
 import { CreatorInfoData } from "@/lib/types/creator-info";
+import { Statistic } from "@/lib/types/statistic";
 
 import RowContainer from "@/app/client/components/atoms/row-container/row-container";
 import Card from "@/app/client/components/atoms/card/card";
-import PillContainer from "../../molecules/pill-container/pill-container";
+import PillContainer from "@/app/client/components/molecules/pill-container/pill-container";
+import InsightsContainer from "@/app/client/components/molecules/insights-container/insights-container";
 
 interface AccountInfoProps {
   infoData: CreatorInfoData;
+  insightsData: Statistic[];
 }
 
-export default function AccountInfo({ infoData }: AccountInfoProps) {
+export default function AccountInfo({
+  infoData,
+  insightsData,
+}: AccountInfoProps) {
   return (
-    <RowContainer className={styles.accountInfoSection}>
-      <Card className={styles.accountInfoCard}>
-        <h1 className={styles.profileBio}> Profile Bio </h1>
+    <>
+      <RowContainer className={styles.accountInfoSection}>
+        <Card className={styles.accountInfoCard}>
+          <h1 className={styles.profileBio}> Profile Bio </h1>
 
-        <RowContainer className={styles.profileBioContainer}>
-          <PillContainer
-            iconName="tiktok"
-            variant="secondary"
-            children={`@${infoData.socialMedia.tiktok}`}
-          />
+          <RowContainer className={styles.profileBioContainer}>
+            <PillContainer
+              iconName="tiktok"
+              variant="secondary"
+              children={`@${infoData.socialMedia.tiktok}`}
+            />
 
-          <h1 className={styles.profileBio}>
-            {infoData.socialMedia.tiktokBio}
-          </h1>
-        </RowContainer>
-      </Card>
-    </RowContainer>
+            <h1 className={styles.profileBio}>
+              {infoData.socialMedia.tiktokBio}
+            </h1>
+          </RowContainer>
+        </Card>
+      </RowContainer>
+
+      <InsightsContainer statistics={insightsData} />
+    </>
   );
 }
