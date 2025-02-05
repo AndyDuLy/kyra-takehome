@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
-import { fetchKyraBaseData } from "@/app/server/handlers/base-data-handler";
-import { handleApiError } from "@/app/server/errors/errorHandler";
+import { fetchKyraBaseData } from "@/app/api-lib/handlers/base-data-handler";
+import { handleApiError } from "@/app/api-lib/errors/errorHandler";
 
 export async function GET() {
   try {

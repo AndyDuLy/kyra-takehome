@@ -1,4 +1,4 @@
-import { handleApiError } from "@/app/server/errors/errorHandler";
+import { handleApiError } from "@/app/api-lib/errors/errorHandler";
 
 export async function fetchKyraStatsHistory() {
   try {

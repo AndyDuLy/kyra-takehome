@@ -1,17 +1,17 @@
-/* Global styles */
-
 :root {
   --background-color: #010000;
+  --secondary-background-color: #19191e;
   --font-family: "Inter, sans-serif";
+  --primary-text-color: #ffffff;
   --headings-color: #ffffff;
   --borders-color: #2d2e2c;
   --borders-border-radius: 20px;
-  --active-heading-color: #b3e53e;
+  --contrast-color: #b3e53e;
   --key-information-text-color: #4c895d;
   --subheadings-color: #706f6f;
-  --subheadings-font-weight: 400; /* regular */
+  --subheadings-font-weight: 400;
   --stats-text-color: #ffffff;
-  --stats-text-font-weight: 300; /* light */
+  --stats-text-font-weight: 300;
 }
 
 body {
@@ -22,6 +22,7 @@ body {
 h1 {
   color: var(--headings-color);
   font-weight: var(--headings-font-weight);
+  margin: 8px;
 }
 
 h2 {
@@ -32,4 +33,14 @@ h2 {
 h3 {
   color: var(--stats-text-color);
   font-weight: var(--stats-text-font-weight);
+}
+
+h4 {
+  color: var(--contrast-color);
+  font-weight: var(--active-heading-font-weight);
+}
+
+h5 {
+  color: var(--key-information-text-color);
+  font-weight: var(--key-information-text-font-weight);
 }

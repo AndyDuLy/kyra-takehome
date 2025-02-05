@@ -1,28 +1,28 @@
 "use client";
 
+import "@/app/globals.css";
+import styles from "@/app/page.module.css";
+
+import FullScreenSpinner from "@/lib/utils/spinner";
+import { CreatorInfoData } from "@/lib/types/creator-info";
+import { fetchBaseData } from "@/app/api-lib/utils/fetchBaseData";
+
+import CreatorInfo from "@/app/client/components/organisms/creator-info/creator-info";
+
 import { useEffect, useState } from "react";
 
 export default function HomePage() {
-  const [kyraData, setKyraData] = useState(null);
+  const [infoData, setInfoData] = useState<CreatorInfoData | null>(null);
   const [statsHistoryData, setStatsHistoryData] = useState(null);
   const [error, setError] = useState("");
 
   useEffect(() => {
-    async function fetchData() {
+    async function getData() {
       try {
-        const res = await fetch("/api/base-data");
-        const res2 = await fetch("/api/stats-history");
-        if (!res.ok) throw new Error("Failed to fetch Kyra data");
-        if (!res2.ok) throw new Error("Failed to fetch Kyra data");
+        const { infoData, statsHistoryData } = await fetchBaseData();
 
-        const data = await res.json();
-        const data2 = await res2.json();
-
-        setKyraData(data);
-        setStatsHistoryData(data2);
-
-        console.log(data);
-        console.log(data2);
+        setInfoData(infoData);
+        setStatsHistoryData(statsHistoryData);
       } catch (err) {
         setError(
           err instanceof Error ? err.message : "An unknown error occurred"
@@ -30,16 +30,14 @@ export default function HomePage() {
       }
     }
 
-    fetchData();
+    getData();
   }, []);
 
-  return (
-    <div>
-      <h1>Kyra Base Data</h1>
-      <h3>{JSON.stringify(kyraData)}</h3>
+  if (!infoData) return <FullScreenSpinner />;
 
-      <h1>Kyra Stats History</h1>
-      <h3>{JSON.stringify(statsHistoryData)}</h3>
+  return (
+    <div className={styles.container}>
+      <CreatorInfo alt={infoData.name} infoData={infoData} />
     </div>
   );
 }

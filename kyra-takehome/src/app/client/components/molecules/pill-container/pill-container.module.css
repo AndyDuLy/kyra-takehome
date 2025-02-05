@@ -1,0 +1,19 @@
+.pillContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px;
+  gap: 4px;
+  border-radius: 8px;
+  overflow-y: auto;
+
+  color: var(--primary-text-color);
+}
+
+.pillContainer.primary {
+  background-color: var(--primary-background-color);
+}
+
+.pillContainer.secondary {
+  background-color: var(--secondary-background-color);
+}
