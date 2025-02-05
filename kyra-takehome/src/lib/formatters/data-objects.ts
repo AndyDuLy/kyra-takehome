@@ -15,6 +15,7 @@ export function formatCreatorInfoData(data: any) {
       languages[data.data?.tiktok?.language as keyof typeof languages] || "",
     socialMedia: {
       tiktok: data.data?.tiktok?.handle || "",
+      tiktokBio: data.data?.tiktok?.bio || "",
       instagram: data.data?.instagram?.handle || "",
       youtube: data.data?.youtube?.channelId || "",
     },

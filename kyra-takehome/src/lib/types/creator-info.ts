@@ -5,6 +5,7 @@ export type CreatorInfoData = {
   language: string;
   socialMedia: {
     tiktok: string;
+    tiktokBio: string;
     instagram: string;
     youtube: string;
   };

@@ -13,6 +13,7 @@ import { fetchBaseData } from "@/app/api-lib/utils/fetchBaseData";
 import CreatorInfo from "@/app/client/components/organisms/creator-info/creator-info";
 import KeyStatistics from "@/app/client/components/organisms/key-statistics/key-statistics";
 import HeaderTabs from "@/app/client/components/organisms/header-tabs/header-tabs";
+import AccountInfo from "@/app/client/components/organisms/account-info/account-info";
 
 export default function HomePage() {
   const [infoData, setInfoData] = useState<CreatorInfoData | null>(null);
@@ -51,6 +52,7 @@ export default function HomePage() {
       <CreatorInfo alt={infoData.name} infoData={infoData} />
       <KeyStatistics statisticsData={keyStatisticsData} />
       <HeaderTabs activeTab={activeTab} setActiveTab={setActiveTab} />
+      {activeTab === "Account info" && <AccountInfo infoData={infoData} />}
     </div>
   );
 }
