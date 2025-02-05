@@ -3,16 +3,14 @@ import Card from "@/app/client/components/atoms/card/card";
 
 interface BubbleContainerProps {
   children: React.ReactNode;
-  props?: any;
+  className?: string;
 }
 
 export default function BubbleContainer({
   children,
-  props,
+  className = "",
 }: BubbleContainerProps) {
   return (
-    <Card props={{ className: styles.bubbleContainer, ...props }}>
-      {children}
-    </Card>
+    <Card className={`${styles.bubbleContainer} ${className}`}>{children}</Card>
   );
 }

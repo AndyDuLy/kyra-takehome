@@ -2,13 +2,9 @@ import styles from "./card.module.css";
 
 interface CardProps {
   children: React.ReactNode;
-  props: any;
+  className?: string;
 }
 
-export default function Card({ children, props }: CardProps) {
-  return (
-    <div className={styles.card} {...props}>
-      {children}
-    </div>
-  );
+export default function Card({ children, className = "" }: CardProps) {
+  return <div className={`${styles.card} ${className}`}>{children}</div>;
 }

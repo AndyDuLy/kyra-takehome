@@ -2,13 +2,14 @@ import styles from "./row-container.module.css";
 
 interface RowContainerProps {
   children: React.ReactNode;
-  props?: any;
+  className?: string;
 }
 
-export default function RowContainer({ children, props }: RowContainerProps) {
+export default function RowContainer({
+  children,
+  className = "",
+}: RowContainerProps) {
   return (
-    <div className={styles.rowContainer} {...props}>
-      {children}
-    </div>
+    <div className={`${styles.rowContainer} ${className}`}>{children}</div>
   );
 }

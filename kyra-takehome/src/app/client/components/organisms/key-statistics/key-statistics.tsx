@@ -10,12 +10,9 @@ interface KeyStatisticsProps {
 
 export default function KeyStatistics({ statisticsData }: KeyStatisticsProps) {
   return (
-    <RowContainer>
+    <RowContainer className={styles.keyStatisticsSection}>
       {statisticsData.map((statistic) => (
-        <BubbleContainer
-          props={{ className: styles.keyStatistics }}
-          key={statistic.title}
-        >
+        <BubbleContainer className={styles.keyStatistics} key={statistic.title}>
           <h2> {statistic.title} </h2>
           <h1> ${statistic.value} </h1>
         </BubbleContainer>

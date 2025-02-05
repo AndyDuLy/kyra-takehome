@@ -1,18 +1,20 @@
 .keyStatistics {
-  padding-left: 16px;
-  padding-right: 16px;
+  padding-left: 0px;
+  padding-bottom: 0px;
   min-width: 150px;
   border-radius: var(--borders-border-radius);
   border: 1px solid var(--borders-color);
 }
 
 .keyStatistics h1 {
-  font-size: 26px;
-  margin-left: 4px;
-  margin-right: 4px;
-  margin-bottom: 12px;
+  font-size: 28px;
 }
 
 .keyStatistics h2 {
   font-size: 16px;
+  margin-bottom: 0px;
+}
+
+.keyStatisticsSection {
+  margin-top: 1rem;
 }
