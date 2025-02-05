@@ -1,13 +1,14 @@
 .keyStatistics {
   padding-left: 0px;
   padding-bottom: 0px;
-  min-width: 150px;
+  min-width: 135px;
   border-radius: var(--borders-border-radius);
   border: 1px solid var(--borders-color);
 }
 
 .keyStatistics h1 {
   font-size: 28px;
+  margin: 8px;
 }
 
 .keyStatistics h2 {

@@ -12,6 +12,7 @@
   --subheadings-font-weight: 300;
   --stats-text-color: #ffffff;
   --stats-text-font-weight: 300;
+  --thin-font-weight: 300;
 }
 
 body {
@@ -22,7 +23,6 @@ body {
 h1 {
   color: var(--headings-color);
   font-weight: var(--headings-font-weight);
-  margin: 8px;
 }
 
 h2 {
