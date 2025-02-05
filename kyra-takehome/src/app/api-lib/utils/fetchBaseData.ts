@@ -1,6 +1,5 @@
-import { countries } from "@/lib/consts/countries";
-import { languages } from "@/lib/consts/languages";
-import { CreatorInfoData } from "@/lib/types/creator-info";
+import { formatCreatorInfoData } from "@/lib/formatters/data-objects";
+import { formatKeyStatisticsData } from "@/lib/formatters/data-objects";
 
 export async function fetchBaseData() {
   try {
@@ -14,24 +13,15 @@ export async function fetchBaseData() {
 
     const [data, data2] = await Promise.all([res.json(), res2.json()]);
 
-    const infoData: CreatorInfoData = {
-      src: data.data?.tiktok?.profilePicture || "",
-      name: data.data?.tiktok?.nickname || "",
-      location:
-        countries[data.data?.tiktok?.region as keyof typeof countries] || "",
-      language:
-        languages[data.data?.tiktok?.language as keyof typeof languages] || "",
-      socialMedia: {
-        tiktok: data.data?.tiktok?.handle || "",
-        instagram: data.data?.instagram?.handle || "",
-        youtube: data.data?.youtube?.channelId || "",
-      },
-    };
+    const infoData = formatCreatorInfoData(data);
+    const keyStatisticsData = formatKeyStatisticsData(data);
 
-    console.log(data.data);
-    console.log(data2.data);
+    console.log(data);
+    console.log(data2);
+    console.log(infoData);
+    console.log(keyStatisticsData);
 
-    return { infoData, statsHistoryData: data2.data };
+    return { infoData, keyStatisticsData, statsHistoryData: data2.data };
   } catch (err) {
     throw new Error(
       err instanceof Error ? err.message : "An unknown error occurred"
