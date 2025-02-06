@@ -66,11 +66,13 @@ export default function HomePage() {
       <HeaderTabs activeTab={activeTab} setActiveTab={setActiveTab} />
 
       {activeTab === "Account info" && (
-        <AccountInfo infoData={infoData} insightsData={insightsData} />
-      )}
+        <>
+          <AccountInfo infoData={infoData} insightsData={insightsData} />
 
-      <Chart chartData={chartData} />
-      {heatmapData && <PostingHeatmap data={heatmapData} />}
+          <Chart chartData={chartData} />
+          {heatmapData && <PostingHeatmap data={heatmapData} />}
+        </>
+      )}
     </div>
   );
 }

@@ -60,6 +60,8 @@ const Chart: React.FC<{ chartData: DataPoint[] }> = ({ chartData }) => {
         backgroundColor: createGradient(ctx, "#5C9F6E"),
         borderWidth: 1,
         fill: true,
+        pointRadius: 0,
+        pointHoverRadius: 0,
       },
       {
         label: "Daily followers",
@@ -68,6 +70,8 @@ const Chart: React.FC<{ chartData: DataPoint[] }> = ({ chartData }) => {
         backgroundColor: createGradient(ctx, "#30726E"),
         borderWidth: 1,
         fill: true,
+        pointRadius: 0,
+        pointHoverRadius: 0,
       },
     ],
   };
