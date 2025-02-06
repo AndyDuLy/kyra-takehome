@@ -1,57 +1,70 @@
 .accountInfoStatsCard {
   border-radius: var(--borders-border-radius);
   border: 1px solid var(--borders-color);
-  padding: 0;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin: 0 16px;
+  width: calc(100% - 32px);
+  overflow: hidden;
 }
 
-@media (min-width: 768px) {
+.accountInfoStatsCardIcon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 12px;
+}
+
+.accountInfoStatsSection {
+  display: grid;
+  gap: 12px;
+  width: 100%;
+  overflow: hidden;
+}
+
+.accountInfoStatsSection > * {
+  width: 100%;
+}
+
+@media (min-width: 1024px) {
   .accountInfoStatsCard {
-    display: grid;
-    grid-template-columns: 0.5fr 10fr;
-    width: 100%;
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .accountInfoStatsSection {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
   }
 
   .tiktokContainer {
-    border-bottom: 0;
     border-radius: var(--borders-border-radius) var(--borders-border-radius) 0 0;
+    border-bottom: 0;
   }
 
   .instagramContainer {
-    border-top: 0;
     border-radius: 0 0 var(--borders-border-radius) var(--borders-border-radius);
-  }
-
-  .accountInfoStatsCardIcon {
-    grid-column: 1;
-    grid-row: 1;
-    align-self: center;
-  }
-
-  .accountInfoStatsSection {
-    grid-column: 2;
-    grid-row: 1;
-
-    display: flex;
-    align-items: center;
-    align-content: center;
-    justify-content: space-evenly;
-    padding-top: 12px;
+    border-top: 0;
   }
 }
 
-@media (max-width: 768px) {
-  .accountInfoStatsCard {
-    padding-top: 12px;
-  }
-
+@media (min-width: 768px) and (max-width: 1023px) {
   .accountInfoStatsSection {
-    display: flex;
-    gap: 10px;
-    flex-direction: row;
-    justify-content: space-evenly;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
-  .instagramContainer {
-    margin-top: 12px;
+  .accountInfoStatsCard {
+    margin-bottom: 16px;
+  }
+}
+
+@media (max-width: 767px) {
+  .accountInfoStatsSection {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .accountInfoStatsCard {
+    margin-bottom: 16px;
   }
 }
