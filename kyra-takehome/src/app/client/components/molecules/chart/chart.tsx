@@ -40,6 +40,16 @@ const Chart: React.FC<{ chartData: DataPoint[] }> = ({ chartData }) => {
     followersCount.push(point.followersCount);
   });
 
+  const createGradient = (ctx: CanvasRenderingContext2D, color: string) => {
+    const gradient = ctx.createLinearGradient(0, 0, 0, 1026);
+    gradient.addColorStop(0, color);
+    gradient.addColorStop(0.2, `${color}00`);
+    return gradient;
+  };
+
+  const ctx = document.createElement("canvas").getContext("2d");
+  if (!ctx) throw new Error("Could not create canvas context");
+
   const data = {
     labels,
     datasets: [
@@ -47,7 +57,7 @@ const Chart: React.FC<{ chartData: DataPoint[] }> = ({ chartData }) => {
         label: "Daily likes",
         data: likesCount,
         borderColor: "#5C9F6E",
-        backgroundColor: "#5C9F6E",
+        backgroundColor: createGradient(ctx, "#5C9F6E"),
         borderWidth: 1,
         fill: true,
       },
@@ -55,7 +65,7 @@ const Chart: React.FC<{ chartData: DataPoint[] }> = ({ chartData }) => {
         label: "Daily followers",
         data: followersCount,
         borderColor: "#30726E",
-        backgroundColor: "#30726E",
+        backgroundColor: createGradient(ctx, "#30726E"),
         borderWidth: 1,
         fill: true,
       },
