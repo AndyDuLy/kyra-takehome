@@ -3,6 +3,7 @@ import {
   formatInsightsData,
   formatKeyStatisticsData,
   formatChartData,
+  formatHeatmapData,
 } from "@/lib/formatters/data-objects";
 
 export async function fetchBaseData() {
@@ -17,16 +18,21 @@ export async function fetchBaseData() {
 
     const [data, data2] = await Promise.all([res.json(), res2.json()]);
 
+    console.log(data);
+    console.log(data2);
+
     const infoData = formatCreatorInfoData(data);
     const keyStatisticsData = formatKeyStatisticsData(data);
     const insightsData = formatInsightsData(data, data2);
     const statsHistoryData = formatChartData(data2.data);
+    const heatmapData = formatHeatmapData(data2.data);
 
     return {
       infoData,
       keyStatisticsData,
       insightsData,
       statsHistoryData,
+      heatmapData,
     };
   } catch (err) {
     throw new Error(

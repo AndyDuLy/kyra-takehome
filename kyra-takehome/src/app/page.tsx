@@ -9,7 +9,7 @@ import FullScreenSpinner from "@/lib/utils/spinner";
 import { CreatorInfoData } from "@/lib/types/creator-info";
 import { KeyStatisticsData } from "@/lib/types/key-statistics-data";
 import { Statistic } from "@/lib/types/statistic";
-import { DataPoint } from "@/lib/types/chart-data";
+import { DataPoint, HeatmapData } from "@/lib/types/chart-data";
 import { fetchBaseData } from "@/app/api-lib/utils/fetchBaseData";
 
 import CreatorInfo from "@/app/client/components/organisms/creator-info/creator-info";
@@ -17,10 +17,12 @@ import KeyStatistics from "@/app/client/components/organisms/key-statistics/key-
 import HeaderTabs from "@/app/client/components/organisms/header-tabs/header-tabs";
 import AccountInfo from "@/app/client/components/organisms/account-info/account-info";
 import Chart from "@/app/client/components/molecules/chart/chart";
+import PostingHeatmap from "@/app/client/components/molecules/posting-heatmap/posting-heatmap";
 
 export default function HomePage() {
   const [infoData, setInfoData] = useState<CreatorInfoData | null>(null);
   const [chartData, setChartData] = useState<DataPoint[]>([]);
+  const [heatmapData, setHeatmapData] = useState<HeatmapData | null>(null);
   const [keyStatisticsData, setKeyStatisticsData] = useState<
     KeyStatisticsData[]
   >([]);
@@ -32,13 +34,19 @@ export default function HomePage() {
   useEffect(() => {
     async function getData() {
       try {
-        const { infoData, keyStatisticsData, insightsData, statsHistoryData } =
-          await fetchBaseData();
+        const {
+          infoData,
+          keyStatisticsData,
+          insightsData,
+          statsHistoryData,
+          heatmapData,
+        } = await fetchBaseData();
 
         setInfoData(infoData);
         setKeyStatisticsData(keyStatisticsData);
         setInsightsData(insightsData);
         setChartData(statsHistoryData);
+        setHeatmapData(heatmapData);
       } catch (err) {
         setError(
           err instanceof Error ? err.message : "An unknown error occurred"
@@ -62,6 +70,7 @@ export default function HomePage() {
       )}
 
       <Chart chartData={chartData} />
+      {heatmapData && <PostingHeatmap data={heatmapData} />}
     </div>
   );
 }

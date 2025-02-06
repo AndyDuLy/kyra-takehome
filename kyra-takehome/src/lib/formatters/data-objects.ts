@@ -9,7 +9,11 @@ import {
 import { CreatorInfoData } from "@/lib/types/creator-info";
 import { KeyStatisticsData } from "@/lib/types/key-statistics-data";
 import { Statistic } from "@/lib/types/statistic";
-import { DataPoint } from "@/lib/types/chart-data";
+import {
+  DataPoint,
+  HeatmapData,
+  HeatmapDataPoint,
+} from "@/lib/types/chart-data";
 import { formatDateNoYear } from "@/lib/formatters/dates";
 import { countries } from "@/lib/consts/countries";
 import { languages } from "@/lib/consts/languages";
@@ -100,8 +104,6 @@ export function formatInsightsData(baseData: any, trendData: any) {
 }
 
 export function formatChartData(data: any) {
-  console.log(data);
-
   let historyPoints: DataPoint[] = [];
 
   data.historyPoints.map((point: any) => {
@@ -115,4 +117,28 @@ export function formatChartData(data: any) {
   });
 
   return historyPoints;
+}
+
+export function formatHeatmapData(data: any) {
+  let heatmapDataPoints: HeatmapDataPoint[] = [];
+
+  let lastPostedOn = data.historyPoints.find(
+    (point: any) => point.postsCount > 0
+  )?.createdAt;
+
+  data.historyPoints.map((point: any) => {
+    heatmapDataPoints.push({
+      date: point.createdAt,
+      count: point.postsCount,
+    });
+  });
+
+  const heatmapData: HeatmapData = {
+    startDate: data.historyPoints[0].createdAt,
+    endDate: data.historyPoints[data.historyPoints.length - 1].createdAt,
+    points: heatmapDataPoints,
+    lastPostedOn: lastPostedOn,
+  };
+
+  return heatmapData;
 }

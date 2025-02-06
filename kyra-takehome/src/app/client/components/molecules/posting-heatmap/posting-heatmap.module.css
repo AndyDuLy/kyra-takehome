@@ -1,0 +1,103 @@
+.heatmapCanvas {
+  width: 100%;
+  border: 1px solid var(--borders-color);
+  border-radius: var(--borders-border-radius);
+  display: flex;
+  flex-direction: column;
+}
+
+.rowContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 100%;
+  padding: 0 24px;
+  margin-top: 18px;
+  margin-bottom: 18px;
+}
+
+.heatmapH1 {
+  margin: 0;
+  font-weight: bold;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.heatmapPill {
+  font-size: 12px;
+  margin: 0;
+  padding: 4px;
+}
+
+.heatmapContainer {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  overflow-x: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #ccc transparent;
+}
+
+.heatmapContainer > div {
+  width: 100%;
+  padding: 0 24px;
+}
+
+.colorEmpty {
+  fill: #2d2d32;
+}
+
+.colorPosting {
+  fill: #5aa06e;
+}
+
+.heatmapContainer svg {
+  display: block;
+  margin: 0 auto;
+}
+
+.lastPostedOn {
+  font-size: 14px;
+  font-weight: 300;
+}
+
+.react-calendar-heatmap .color-empty {
+  fill: #2d2d32;
+}
+
+.react-calendar-heatmap .color-posting {
+  fill: #5aa06e;
+}
+
+@media (max-width: 768px) {
+  .heatmapCanvas {
+    height: auto;
+  }
+
+  .heatmapContainer {
+    justify-content: flex-start;
+  }
+
+  .heatmapContainer > div {
+    min-width: 800px;
+    padding: 0 12px;
+  }
+
+  .rowContainer {
+    justify-content: center;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .heatmapH1 {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+  }
+}
+
+.testDataEmpty {
+  fill: #0000ff;
+}
