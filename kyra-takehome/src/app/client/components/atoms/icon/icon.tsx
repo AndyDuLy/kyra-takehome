@@ -1,16 +1,18 @@
-import { IconName } from "@/lib/types/icon-types";
+import { IconName } from "@/lib/types/icons";
 import { JSX } from "react";
 
 interface IconProps {
   name: IconName;
   size?: number;
   color?: string;
+  onClick?: () => void;
 }
 
 const Icon: React.FC<IconProps> = ({
   name,
   size = 24,
   color = "currentColor",
+  onClick,
   ...props
 }) => {
   const icons: Record<IconName, JSX.Element> = {
@@ -21,6 +23,7 @@ const Icon: React.FC<IconProps> = ({
         width={size}
         height={size}
         {...props}
+        onClick={onClick}
       >
         <path
           fill={color}
@@ -35,6 +38,7 @@ const Icon: React.FC<IconProps> = ({
         width={size}
         height={size}
         {...props}
+        onClick={onClick}
       >
         <path
           fill={color}
@@ -51,6 +55,7 @@ const Icon: React.FC<IconProps> = ({
         width={size}
         height={size}
         {...props}
+        onClick={onClick}
       >
         <path
           fill={color}
@@ -67,6 +72,7 @@ const Icon: React.FC<IconProps> = ({
         width={size}
         height={size}
         {...props}
+        onClick={onClick}
       >
         <path
           fill={color}
@@ -81,6 +87,7 @@ const Icon: React.FC<IconProps> = ({
         width={size}
         height={size}
         {...props}
+        onClick={onClick}
       >
         <path
           fill={color}
@@ -95,6 +102,7 @@ const Icon: React.FC<IconProps> = ({
         width={size}
         height={size}
         {...props}
+        onClick={onClick}
       >
         <path
           fill={color}
@@ -109,6 +117,7 @@ const Icon: React.FC<IconProps> = ({
         width={size}
         height={size}
         {...props}
+        onClick={onClick}
       >
         <path
           fill={color}
@@ -123,6 +132,7 @@ const Icon: React.FC<IconProps> = ({
         width={size}
         height={size}
         {...props}
+        onClick={onClick}
       >
         <path
           fill={color}
@@ -137,6 +147,7 @@ const Icon: React.FC<IconProps> = ({
         width={size}
         height={size}
         {...props}
+        onClick={onClick}
       >
         <path
           fill={color}

@@ -1,5 +1,15 @@
 import { formatMagnitude } from "../formatters/numbers";
 
+export const weekdayLabels: [
+  string,
+  string,
+  string,
+  string,
+  string,
+  string,
+  string
+] = ["S", "M", "T", "W", "T", "F", "S"];
+
 export const options = {
   responsive: true,
   maintainAspectRatio: false,

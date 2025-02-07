@@ -1,6 +1,6 @@
 import styles from "./insights-container.module.css";
 
-import { Statistic } from "@/lib/types/statistic";
+import { Statistic } from "@/lib/types/statistics";
 import Card from "@/app/client/components/atoms/card/card";
 import Icon from "@/app/client/components/atoms/icon/icon";
 import RowContainer from "@/app/client/components/atoms/row-container/row-container";

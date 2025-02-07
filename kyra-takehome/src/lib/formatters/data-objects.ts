@@ -1,19 +1,14 @@
 import {
-  formatNumber,
   formatNumberTruncateDecimals,
   formatMagnitude,
   formatAsPercentage,
   formatPercentageRaise,
+  determineMagnitude,
 } from "./numbers";
 
 import { CreatorInfoData } from "@/lib/types/creator-info";
-import { KeyStatisticsData } from "@/lib/types/key-statistics-data";
-import { Statistic } from "@/lib/types/statistic";
-import {
-  DataPoint,
-  HeatmapData,
-  HeatmapDataPoint,
-} from "@/lib/types/chart-data";
+import { KeyStatisticsData, Statistic } from "@/lib/types/statistics";
+import { DataPoint, HeatmapData, HeatmapDataPoint } from "@/lib/types/charts";
 import { formatDateNoYear } from "@/lib/formatters/dates";
 import { countries } from "@/lib/consts/countries";
 import { languages } from "@/lib/consts/languages";
@@ -39,9 +34,7 @@ export function formatCreatorInfoData(data: any) {
 
 export function formatKeyStatisticsData(data: any) {
   // TODO: confirm trunc or mockup fee was flat by chance
-  const predictedFee = formatNumber(
-    formatNumberTruncateDecimals(data.predictedFee || 0)
-  );
+  const predictedFee = formatNumberTruncateDecimals(data.predictedFee || 0);
 
   const keyStatisticsData: KeyStatisticsData[] = [
     {
@@ -69,33 +62,39 @@ export function formatInsightsData(baseData: any, trendData: any) {
   const insightsData: Statistic[] = [
     {
       type: "Followers",
-      value: formatMagnitude(baseData.data.tiktok.followersCount || 0),
+      value: formatMagnitude(baseData.data.tiktok.followersCount),
+      magnitude: determineMagnitude(baseData.data.tiktok.followersCount),
       differenceAsPercentage: formatPercentageRaise(
         trendData.data.delta.followersCount.percentage || 0
       ),
     },
     {
       type: "Average views",
-      value: formatMagnitude(baseData.data.tiktok.medianViews || 0),
+      value: formatMagnitude(baseData.data.tiktok.medianViews),
+      magnitude: determineMagnitude(baseData.data.tiktok.medianViews),
     },
     {
       type: "Potential sponsored views",
-      value: formatMagnitude(baseData.data.tiktok.sponsoredMedianViews || 0),
+      value: formatMagnitude(baseData.data.tiktok.sponsoredMedianViews),
+      magnitude: determineMagnitude(baseData.data.tiktok.sponsoredMedianViews),
     },
     {
       type: "Total likes",
-      value: formatMagnitude(baseData.data.tiktok.likesCount || 0),
+      value: formatMagnitude(baseData.data.tiktok.likesCount),
+      magnitude: determineMagnitude(baseData.data.tiktok.likesCount),
       differenceAsPercentage: formatPercentageRaise(
         trendData.data.delta.likesCount.percentage || 0
       ),
     },
     {
       type: "Engagement rate",
-      value: formatAsPercentage(baseData.data.tiktok.engagementRate || 0),
+      value: formatMagnitude(baseData.data.tiktok.engagementRate),
+      magnitude: determineMagnitude(baseData.data.tiktok.engagementRate),
     },
     {
       type: "Total posts",
-      value: baseData.data.tiktok.postsCount || 0,
+      value: formatMagnitude(baseData.data.tiktok.postsCount),
+      magnitude: determineMagnitude(baseData.data.tiktok.postsCount),
       differenceAsPercentage: trendData.data.delta.postsCount.absolute || 0,
     },
   ];

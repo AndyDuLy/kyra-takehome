@@ -18,4 +18,11 @@
 
 .keyStatisticsSection {
   margin-top: 1rem;
+  gap: 2rem;
+}
+
+@media (max-width: 768px) {
+  .keyStatisticsSection {
+    gap: 0.5rem;
+  }
 }

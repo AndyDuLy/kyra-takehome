@@ -17,12 +17,24 @@ interface CreatorInfoProps {
 export default function CreatorInfo({ alt, infoData }: CreatorInfoProps) {
   return (
     <div className={styles.creatorInfo}>
-      <Image src={infoData.src} alt={alt} width={125} height={125} />
+      <Image src={infoData.src} alt={alt} width={150} height={150} />
 
       <RowContainer>
         <h1 className={styles.creatorInfoName}> {infoData.name} </h1>
-        <Icon name="bookmark" color="var(--contrast-color)" />
-        <Icon name="share" color="var(--contrast-color)" />
+        <Icon
+          name="bookmark"
+          color="var(--contrast-color)"
+          onClick={() => {
+            alert(`${infoData.name} bookmarked!`);
+          }}
+        />
+        <Icon
+          name="share"
+          color="var(--contrast-color)"
+          onClick={() => {
+            alert(`${infoData.name} shared!`);
+          }}
+        />
       </RowContainer>
 
       <RowContainer>

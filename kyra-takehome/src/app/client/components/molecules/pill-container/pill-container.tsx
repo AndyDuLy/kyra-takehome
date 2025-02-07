@@ -1,6 +1,6 @@
 import styles from "./pill-container.module.css";
-import { PillContainerVariant } from "@/lib/types/pill-container-variants";
-import { IconName } from "@/lib/types/icon-types";
+import { PillContainerVariant } from "@/lib/types/pill-container";
+import { IconName } from "@/lib/types/icons";
 import Icon from "@/app/client/components/atoms/icon/icon";
 
 interface PillContainerProps {

@@ -1,21 +1,29 @@
-export function formatNumber(number: number) {
-  return number.toLocaleString();
-}
-
 export function formatNumberTruncateDecimals(number: number) {
   return Math.trunc(number);
 }
 
+export function determineMagnitude(number: number) {
+  if (number >= 1e9) {
+    return "b";
+  } else if (number >= 1e6) {
+    return "m";
+  } else if (number >= 1e3) {
+    return "k";
+  } else {
+    return undefined;
+  }
+}
+
 export function formatMagnitude(number: number) {
   if (number >= 1e9) {
-    return (number / 1e9).toFixed(1) + "b";
+    return Number((number / 1e9).toFixed(1));
   } else if (number >= 1e6) {
-    return (number / 1e6).toFixed(1) + "m";
+    return Number((number / 1e6).toFixed(1));
   } else if (number >= 1e3) {
-    return (number / 1e3).toFixed(1) + "k";
-  } else {
-    return number.toString();
+    return Number((number / 1e3).toFixed(1));
   }
+
+  return number;
 }
 
 export function formatAsPercentage(number: number) {
@@ -23,5 +31,5 @@ export function formatAsPercentage(number: number) {
 }
 
 export function formatPercentageRaise(number: number) {
-  return (number * 100).toFixed(2);
+  return Number((number * 100).toFixed(2));
 }

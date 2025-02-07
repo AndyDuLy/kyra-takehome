@@ -8,24 +8,27 @@ import {
 
 export async function fetchBaseData() {
   try {
-    const [res, res2] = await Promise.all([
+    const [baseDataRes, statsHistoryRes] = await Promise.all([
       fetch("/api/base-data"),
       fetch("/api/stats-history"),
     ]);
 
-    if (!res.ok) throw new Error("Failed to fetch Kyra data");
-    if (!res2.ok) throw new Error("Failed to fetch Kyra data");
+    if (!baseDataRes.ok || !statsHistoryRes.ok)
+      throw new Error("Failed to fetch Kyra data");
 
-    const [data, data2] = await Promise.all([res.json(), res2.json()]);
+    const [baseData, statsHistory] = await Promise.all([
+      baseDataRes.json(),
+      statsHistoryRes.json(),
+    ]);
 
-    console.log(data);
-    console.log(data2);
+    console.log(baseData);
+    console.log(statsHistory);
 
-    const infoData = formatCreatorInfoData(data);
-    const keyStatisticsData = formatKeyStatisticsData(data);
-    const insightsData = formatInsightsData(data, data2);
-    const statsHistoryData = formatChartData(data2.data);
-    const heatmapData = formatHeatmapData(data2.data);
+    const infoData = formatCreatorInfoData(baseData);
+    const keyStatisticsData = formatKeyStatisticsData(baseData);
+    const insightsData = formatInsightsData(baseData, statsHistory);
+    const statsHistoryData = formatChartData(statsHistory.data);
+    const heatmapData = formatHeatmapData(statsHistory.data);
 
     return {
       infoData,

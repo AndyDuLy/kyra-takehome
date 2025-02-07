@@ -44,3 +44,7 @@ h5 {
   color: var(--key-information-text-color);
   font-weight: var(--key-information-text-font-weight);
 }
+
+.counter {
+  transition: opacity 0.8s ease-in-out;
+}

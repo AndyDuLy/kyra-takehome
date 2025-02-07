@@ -1,7 +1,7 @@
 import styles from "./account-info.module.css";
 
 import { CreatorInfoData } from "@/lib/types/creator-info";
-import { Statistic } from "@/lib/types/statistic";
+import { Statistic } from "@/lib/types/statistics";
 
 import RowContainer from "@/app/client/components/atoms/row-container/row-container";
 import Card from "@/app/client/components/atoms/card/card";

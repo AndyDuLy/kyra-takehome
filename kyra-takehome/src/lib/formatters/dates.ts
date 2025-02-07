@@ -31,3 +31,12 @@ export function formatLastPostedOn(date: Date) {
     month: "short",
   })} '${date.getFullYear().toString().slice(-2)}`;
 }
+
+export function formatDayMonth(date: Date) {
+  const day = date.toLocaleDateString("en-CA", { day: "numeric" });
+  const month = date.toLocaleDateString("en-CA", { month: "short" });
+
+  const formattedDate = `${day} ${month}`;
+
+  return formattedDate;
+}
