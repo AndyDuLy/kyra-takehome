@@ -25,7 +25,10 @@ export default function HomePage() {
   const [keyStatisticsData, setKeyStatisticsData] = useState<
     KeyStatisticsData[]
   >([]);
-  const [insightsData, setInsightsData] = useState<Statistic[]>([]);
+  const [tiktokInsightsData, setTiktokInsightsData] = useState<Statistic[]>([]);
+  const [instagramInsightsData, setInstagramInsightsData] = useState<
+    Statistic[]
+  >([]);
   const [error, setError] = useState("");
 
   const [activeTab, setActiveTab] = useState("Account info");
@@ -36,14 +39,16 @@ export default function HomePage() {
         const {
           infoData,
           keyStatisticsData,
-          insightsData,
+          tiktokInsightsData,
+          instagramInsightsData,
           statsHistoryData,
           heatmapData,
         } = await fetchBaseData();
 
         setInfoData(infoData);
         setKeyStatisticsData(keyStatisticsData);
-        setInsightsData(insightsData);
+        setTiktokInsightsData(tiktokInsightsData);
+        setInstagramInsightsData(instagramInsightsData);
         setChartData(statsHistoryData);
         setHeatmapData(heatmapData);
       } catch (err) {
@@ -66,7 +71,11 @@ export default function HomePage() {
 
       {activeTab === "Account info" && (
         <>
-          <AccountInfo infoData={infoData} insightsData={insightsData} />
+          <AccountInfo
+            infoData={infoData}
+            tiktokInsightsData={tiktokInsightsData}
+            instagramInsightsData={instagramInsightsData}
+          />
 
           <Chart chartData={chartData} />
           {heatmapData && <PostingHeatmap data={heatmapData} />}

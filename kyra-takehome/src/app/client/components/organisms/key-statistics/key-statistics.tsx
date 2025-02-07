@@ -24,7 +24,7 @@ export default function KeyStatistics({ statisticsData }: KeyStatisticsProps) {
             data-target={statistic.value > 0 ? statistic.value : null}
             data-prefix={statistic.value > 0 ? "$" : ""}
           >
-            {statistic.value === 0 ? "_" : `${statistic.value}`}
+            {statistic.value === 0 ? "--" : `${statistic.value}`}
           </h1>
         </BubbleContainer>
       ))}

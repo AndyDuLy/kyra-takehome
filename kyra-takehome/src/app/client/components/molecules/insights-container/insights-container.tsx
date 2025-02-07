@@ -7,11 +7,13 @@ import RowContainer from "@/app/client/components/atoms/row-container/row-contai
 import StatsInsightsContainer from "@/app/client/components/molecules/stats-insights-container/stats-insights-container";
 
 interface InsightsContainerProps {
-  statistics: Statistic[];
+  tiktokStatistics: Statistic[];
+  instagramStatistics: Statistic[];
 }
 
 export default function InsightsContainer({
-  statistics,
+  tiktokStatistics,
+  instagramStatistics,
 }: InsightsContainerProps) {
   return (
     <>
@@ -23,7 +25,7 @@ export default function InsightsContainer({
         </Card>
 
         <RowContainer className={styles.accountInfoStatsSection}>
-          {statistics.map((statistic, id) => (
+          {tiktokStatistics.map((statistic, id) => (
             <StatsInsightsContainer
               key={id}
               className={styles.element}
@@ -41,7 +43,7 @@ export default function InsightsContainer({
         </Card>
 
         <RowContainer className={styles.accountInfoStatsSection}>
-          {statistics.map((statistic, id) => (
+          {instagramStatistics.map((statistic, id) => (
             <StatsInsightsContainer
               key={id}
               className={styles.element}

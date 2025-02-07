@@ -1,6 +1,7 @@
 import {
   formatCreatorInfoData,
-  formatInsightsData,
+  formatTiktokInsightsData,
+  formatInstagramInsightsData,
   formatKeyStatisticsData,
   formatChartData,
   formatHeatmapData,
@@ -23,14 +24,19 @@ export async function fetchBaseData() {
 
     const infoData = formatCreatorInfoData(baseData);
     const keyStatisticsData = formatKeyStatisticsData(baseData);
-    const insightsData = formatInsightsData(baseData, statsHistory);
+    const tiktokInsightsData = formatTiktokInsightsData(baseData, statsHistory);
+    const instagramInsightsData = formatInstagramInsightsData(
+      baseData,
+      statsHistory
+    );
     const statsHistoryData = formatChartData(statsHistory.data);
     const heatmapData = formatHeatmapData(statsHistory.data);
 
     return {
       infoData,
       keyStatisticsData,
-      insightsData,
+      tiktokInsightsData,
+      instagramInsightsData,
       statsHistoryData,
       heatmapData,
     };

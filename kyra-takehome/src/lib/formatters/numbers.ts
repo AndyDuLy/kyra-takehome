@@ -27,7 +27,7 @@ export function formatMagnitude(number: number) {
 }
 
 export function formatAsPercentage(number: number) {
-  return (number * 0.01).toFixed(3) + "%";
+  return Number((number * 0.01).toFixed(3));
 }
 
 export function formatPercentageRaise(number: number) {

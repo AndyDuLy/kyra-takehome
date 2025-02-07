@@ -10,12 +10,14 @@ import InsightsContainer from "@/app/client/components/molecules/insights-contai
 
 interface AccountInfoProps {
   infoData: CreatorInfoData;
-  insightsData: Statistic[];
+  tiktokInsightsData: Statistic[];
+  instagramInsightsData: Statistic[];
 }
 
 export default function AccountInfo({
   infoData,
-  insightsData,
+  tiktokInsightsData,
+  instagramInsightsData,
 }: AccountInfoProps) {
   return (
     <>
@@ -37,7 +39,10 @@ export default function AccountInfo({
         </Card>
       </RowContainer>
 
-      <InsightsContainer statistics={insightsData} />
+      <InsightsContainer
+        tiktokStatistics={tiktokInsightsData}
+        instagramStatistics={instagramInsightsData}
+      />
     </>
   );
 }

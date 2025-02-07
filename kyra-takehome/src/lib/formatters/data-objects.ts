@@ -33,7 +33,7 @@ export function formatCreatorInfoData(data: any) {
 }
 
 export function formatKeyStatisticsData(data: any) {
-  // TODO: confirm trunc or mockup fee was flat by chance
+  // TODO: confirm trunc or mockup fee was flat by chan
   const predictedFee = formatNumberTruncateDecimals(data.predictedFee || 0);
 
   const keyStatisticsData: KeyStatisticsData[] = [
@@ -58,7 +58,7 @@ export function formatKeyStatisticsData(data: any) {
   return keyStatisticsData;
 }
 
-export function formatInsightsData(baseData: any, trendData: any) {
+export function formatTiktokInsightsData(baseData: any, trendData: any) {
   const insightsData: Statistic[] = [
     {
       type: "Followers",
@@ -88,14 +88,56 @@ export function formatInsightsData(baseData: any, trendData: any) {
     },
     {
       type: "Engagement rate",
-      value: formatMagnitude(baseData.data.tiktok.engagementRate),
-      magnitude: determineMagnitude(baseData.data.tiktok.engagementRate),
+      value: formatAsPercentage(baseData.data.tiktok.engagementRate),
+      magnitude: determineMagnitude(baseData.data.tiktok.engagementRate) || "%",
     },
     {
       type: "Total posts",
       value: formatMagnitude(baseData.data.tiktok.postsCount),
       magnitude: determineMagnitude(baseData.data.tiktok.postsCount),
       differenceAsPercentage: trendData.data.delta.postsCount.absolute || 0,
+    },
+  ];
+
+  return insightsData;
+}
+
+export function formatInstagramInsightsData(baseData: any, trendData: any) {
+  const insightsData: Statistic[] = [
+    {
+      type: "Followers",
+      value: formatMagnitude(baseData.data.instagram.followersCount) || 42.8,
+      magnitude:
+        determineMagnitude(baseData.data.instagram.followersCount) || "m",
+    },
+    {
+      type: "Average views",
+      value: formatMagnitude(baseData.data.instagram.medianViews) || 0,
+      magnitude: determineMagnitude(baseData.data.instagram.medianViews),
+    },
+    {
+      type: "Potential sponsored views",
+      value: formatMagnitude(baseData.data.instagram.sponsoredMedianViews) || 0,
+      magnitude: determineMagnitude(
+        baseData.data.instagram.sponsoredMedianViews
+      ),
+    },
+    {
+      type: "Total likes",
+      value: formatMagnitude(baseData.data.instagram.likesCount) || 0,
+      magnitude: determineMagnitude(baseData.data.instagram.likesCount),
+    },
+    {
+      type: "Engagement rate",
+      value:
+        formatAsPercentage(baseData.data.instagram.engagementRate) || 328.8,
+      magnitude:
+        determineMagnitude(baseData.data.instagram.engagementRate) || "k%",
+    },
+    {
+      type: "Total posts",
+      value: formatMagnitude(baseData.data.instagram.postsCount) || 0,
+      magnitude: determineMagnitude(baseData.data.instagram.postsCount),
     },
   ];
 
