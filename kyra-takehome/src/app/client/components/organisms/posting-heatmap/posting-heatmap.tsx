@@ -26,8 +26,10 @@ const PostingHeatmap = ({ data }: PostingHeatmapProps) => {
   return (
     <div className={styles.heatmapCanvas}>
       <RowContainer className={styles.rowContainer}>
-        <h1 className={styles.heatmapH1}>Posting history</h1>
-        <h1 className={styles.lastPostedOn}>Last posted: {formattedDate}</h1>
+        <div className={styles.heatmapHeadings}>
+          <h1 className={styles.heatmapH1}>Posting history</h1>
+          <h1 className={styles.lastPostedOn}>Last posted: {formattedDate}</h1>
+        </div>
 
         <PillContainer
           className={styles.heatmapPill}

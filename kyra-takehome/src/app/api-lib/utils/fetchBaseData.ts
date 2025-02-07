@@ -21,9 +21,6 @@ export async function fetchBaseData() {
       statsHistoryRes.json(),
     ]);
 
-    console.log(baseData);
-    console.log(statsHistory);
-
     const infoData = formatCreatorInfoData(baseData);
     const keyStatisticsData = formatKeyStatisticsData(baseData);
     const insightsData = formatInsightsData(baseData, statsHistory);

@@ -8,7 +8,6 @@ export const calculateStartDate = (endDate: Date) => {
 };
 
 export const dynamicRectangleStyling = (value: number) => {
-  if (value === null) return styles.testDataEmpty;
   if (!value || value === 0) return styles.colorEmpty;
   return value === 0 ? styles.colorEmpty : styles.colorPosting;
 };
