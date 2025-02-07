@@ -1,0 +1,17 @@
+{
+  "name": "forked-react-calendar-heatmap",
+  "version": "1.0.0",
+  "description": "A forked version of react-calendar-heatmap with custom modifications.",
+  "main": "react-calendar-heatmap.cjs.js",
+  "module": "react-calendar-heatmap.esm.js",
+  "scripts": {
+    "build": "echo 'Build script placeholder'"
+  },
+  "keywords": [],
+  "author": "Your Name",
+  "license": "MIT",
+  "dependencies": {
+    "react": "^17.0.2",
+    "prop-types": "^15.7.2"
+  }
+}

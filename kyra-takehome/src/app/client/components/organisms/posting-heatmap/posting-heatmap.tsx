@@ -1,8 +1,8 @@
 import React from "react";
 import styles from "./posting-heatmap.module.css";
 
-import "react-calendar-heatmap/dist/styles.css";
-import CalendarHeatmap from "react-calendar-heatmap";
+import "@/lib/forked-react-calendar-heatmap/dist/styles.css";
+import CalendarHeatmapForked from "forked-react-calendar-heatmap";
 
 import { HeatmapData } from "@/lib/types/charts";
 import { formatLastPostedOn } from "@/lib/formatters/dates";
@@ -43,7 +43,7 @@ const PostingHeatmap = ({ data }: PostingHeatmapProps) => {
 
       <div className={styles.heatmapContainer}>
         <div>
-          <CalendarHeatmap
+          <CalendarHeatmapForked
             startDate={calculateStartDate(new Date(data.endDate))}
             endDate={new Date(data.endDate)}
             values={data.points}
@@ -51,7 +51,8 @@ const PostingHeatmap = ({ data }: PostingHeatmapProps) => {
             weekdayLabels={weekdayLabels}
             showMonthLabels={true}
             gutterSize={3}
-            classForValue={(value) => {
+            borderRadius={4}
+            classForValue={(value: { count: number }) => {
               return dynamicRectangleStyling(value?.count);
             }}
           />
