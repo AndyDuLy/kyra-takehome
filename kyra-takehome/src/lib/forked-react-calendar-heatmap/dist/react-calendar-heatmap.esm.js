@@ -675,12 +675,12 @@ function (_React$Component) {
 
         var cssClasses = "".concat(_this6.props.horizontal ? '' : "".concat(CSS_PSEDUO_NAMESPACE, "small-text"), " ").concat(CSS_PSEDUO_NAMESPACE, "weekday-label"); // eslint-disable-next-line no-bitwise
 
-        return dayIndex & 1 ? React.createElement("text", {
+        return React.createElement("text", {
           key: "".concat(x).concat(y),
           x: x,
           y: y,
           className: cssClasses
-        }, weekdayLabel) : null;
+        }, weekdayLabel);
       });
     }
   }, {

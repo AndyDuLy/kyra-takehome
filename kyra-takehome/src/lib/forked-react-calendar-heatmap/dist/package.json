@@ -11,7 +11,7 @@
   "author": "Your Name",
   "license": "MIT",
   "dependencies": {
-    "react": "^17.0.2",
+    "react": "^19.0.0",
     "prop-types": "^15.7.2"
   }
 }
