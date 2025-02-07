@@ -17,7 +17,12 @@ function animateValue(
         ? String(Math.floor(progress * (end - start) + start))
         : (progress * (end - start) + start).toFixed(2);
 
-    element.textContent = parseFloat(value).toLocaleString();
+    element.textContent =
+      progress < 1
+        ? parseFloat(value).toLocaleString()
+        : `${element.getAttribute("data-prefix") || ""}${parseFloat(
+            value
+          ).toLocaleString()}`;
 
     if (progress < 1) {
       window.requestAnimationFrame(step);
