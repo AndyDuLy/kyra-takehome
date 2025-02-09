@@ -1,7 +1,7 @@
 import styles from "./key-statistics.module.css";
 import { useEffect } from "react";
-import RowContainer from "@/app/client/components/atoms/row-container/row-container";
-import BubbleContainer from "@/app/client/components/molecules/bubble-container/bubble-container";
+import RowContainer from "@/components/atoms/row-container/row-container";
+import BubbleContainer from "@/components/molecules/bubble-container/bubble-container";
 import { KeyStatisticsData } from "@/lib/types/statistics";
 import { startCounting } from "@/lib/utils/counting-animation";
 

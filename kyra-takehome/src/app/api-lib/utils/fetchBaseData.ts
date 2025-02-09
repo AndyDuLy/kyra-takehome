@@ -25,10 +25,7 @@ export async function fetchBaseData() {
     const infoData = formatCreatorInfoData(baseData);
     const keyStatisticsData = formatKeyStatisticsData(baseData);
     const tiktokInsightsData = formatTiktokInsightsData(baseData, statsHistory);
-    const instagramInsightsData = formatInstagramInsightsData(
-      baseData,
-      statsHistory
-    );
+    const instagramInsightsData = formatInstagramInsightsData(baseData);
     const statsHistoryData = formatChartData(statsHistory.data);
     const heatmapData = formatHeatmapData(statsHistory.data);
 

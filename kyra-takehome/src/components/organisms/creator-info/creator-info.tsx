@@ -2,11 +2,11 @@ import styles from "./creator-info.module.css";
 
 import { CreatorInfoData } from "@/lib/types/creator-info";
 
-import Icon from "@/app/client/components/atoms/icon/icon";
-import Image from "@/app/client/components/atoms/image/image";
-import RowContainer from "@/app/client/components/atoms/row-container/row-container";
+import Icon from "@/components/atoms/icon/icon";
+import Image from "@/components/atoms/image/image";
+import RowContainer from "@/components/atoms/row-container/row-container";
 
-import PillContainer from "@/app/client/components/molecules/pill-container/pill-container";
+import PillContainer from "@/components/molecules/pill-container/pill-container";
 import { socialMediaLinks } from "@/lib/consts/social-media-links";
 
 interface CreatorInfoProps {
@@ -38,38 +38,37 @@ export default function CreatorInfo({ alt, infoData }: CreatorInfoProps) {
       </RowContainer>
 
       <RowContainer>
-        <PillContainer
-          iconName="locationPin"
-          children={infoData.location}
-          variant="primary"
-        />
+        <PillContainer iconName="locationPin" variant="primary">
+          {infoData.location}
+        </PillContainer>
 
-        <PillContainer
-          iconName="language"
-          children={infoData.language}
-          variant="primary"
-        />
+        <PillContainer iconName="language" variant="primary">
+          {infoData.language}
+        </PillContainer>
       </RowContainer>
 
       <RowContainer>
         <PillContainer
           iconName="tiktok"
-          children={`@${infoData.socialMedia.tiktok}`}
           redirectUrl={`${socialMediaLinks.tiktok}${infoData.socialMedia.tiktok}`}
           variant="secondary"
-        />
+        >
+          {`@${infoData.socialMedia.tiktok}`}{" "}
+        </PillContainer>
         <PillContainer
           iconName="instagram"
-          children={`@${infoData.socialMedia.instagram}`}
           redirectUrl={`${socialMediaLinks.instagram}${infoData.socialMedia.instagram}`}
           variant="secondary"
-        />
+        >
+          {`@${infoData.socialMedia.instagram}`}{" "}
+        </PillContainer>
         <PillContainer
           iconName="youtube"
-          children="YouTube"
           redirectUrl={`${socialMediaLinks.youtube}${infoData.socialMedia.youtube}`}
           variant="secondary"
-        />
+        >
+          YouTube
+        </PillContainer>
       </RowContainer>
     </div>
   );

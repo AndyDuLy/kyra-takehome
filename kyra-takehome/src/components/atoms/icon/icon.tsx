@@ -1,3 +1,4 @@
+// This component is not a route
 import { IconName } from "@/lib/types/icons";
 import { JSX } from "react";
 

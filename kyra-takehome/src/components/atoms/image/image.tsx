@@ -1,3 +1,4 @@
+import { ImgHTMLAttributes } from "react";
 import styles from "./image.module.css";
 
 interface ImageProps {
@@ -5,7 +6,7 @@ interface ImageProps {
   alt: string;
   width: number;
   height: number;
-  props?: any;
+  props?: ImgHTMLAttributes<HTMLImageElement>;
 }
 
 export default function Image({

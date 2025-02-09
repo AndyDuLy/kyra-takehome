@@ -1,5 +1,5 @@
 import styles from "./bubble-container.module.css";
-import Card from "@/app/client/components/atoms/card/card";
+import Card from "@/components/atoms/card/card";
 
 interface BubbleContainerProps {
   children: React.ReactNode;

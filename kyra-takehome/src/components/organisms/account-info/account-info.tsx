@@ -3,10 +3,10 @@ import styles from "./account-info.module.css";
 import { CreatorInfoData } from "@/lib/types/creator-info";
 import { Statistic } from "@/lib/types/statistics";
 
-import RowContainer from "@/app/client/components/atoms/row-container/row-container";
-import Card from "@/app/client/components/atoms/card/card";
-import PillContainer from "@/app/client/components/molecules/pill-container/pill-container";
-import InsightsContainer from "@/app/client/components/molecules/insights-container/insights-container";
+import RowContainer from "@/components/atoms/row-container/row-container";
+import Card from "@/components/atoms/card/card";
+import PillContainer from "@/components/molecules/pill-container/pill-container";
+import InsightsContainer from "@/components/molecules/insights-container/insights-container";
 
 interface AccountInfoProps {
   infoData: CreatorInfoData;
@@ -26,11 +26,9 @@ export default function AccountInfo({
           <h1 className={styles.profileBio}> Profile Bio </h1>
 
           <RowContainer className={styles.profileBioContainer}>
-            <PillContainer
-              iconName="tiktok"
-              variant="secondary"
-              children={`@${infoData.socialMedia.tiktok}`}
-            />
+            <PillContainer iconName="tiktok" variant="secondary">
+              {`@${infoData.socialMedia.tiktok}`}
+            </PillContainer>
 
             <h1 className={styles.profileBio}>
               {infoData.socialMedia.tiktokBio}

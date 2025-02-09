@@ -1,4 +1,4 @@
-import styles from "@/app/client/components/organisms/posting-heatmap/posting-heatmap.module.css";
+import styles from "@/components/organisms/posting-heatmap/posting-heatmap.module.css";
 import { heatmapMonthsRange } from "@/lib/consts/heatmap";
 
 export const calculateStartDate = (endDate: Date) => {

@@ -40,3 +40,7 @@ export function formatDayMonth(date: Date) {
 
   return formattedDate;
 }
+
+export function formatDateAsDateType(date: string) {
+  return new Date(date);
+}

@@ -1,8 +1,8 @@
 import styles from "./stats-insights-container.module.css";
 
 import { Statistic } from "@/lib/types/statistics";
-import Card from "@/app/client/components/atoms/card/card";
-import Icon from "@/app/client/components/atoms/icon/icon";
+import Card from "@/components/atoms/card/card";
+import Icon from "@/components/atoms/icon/icon";
 
 interface StatsInsightsContainerProps {
   statistic: Statistic;

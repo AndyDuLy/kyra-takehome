@@ -1,10 +1,10 @@
 import styles from "./insights-container.module.css";
 
 import { Statistic } from "@/lib/types/statistics";
-import Card from "@/app/client/components/atoms/card/card";
-import Icon from "@/app/client/components/atoms/icon/icon";
-import RowContainer from "@/app/client/components/atoms/row-container/row-container";
-import StatsInsightsContainer from "@/app/client/components/molecules/stats-insights-container/stats-insights-container";
+import Card from "@/components/atoms/card/card";
+import Icon from "@/components/atoms/icon/icon";
+import RowContainer from "@/components/atoms/row-container/row-container";
+import StatsInsightsContainer from "@/components/molecules/stats-insights-container/stats-insights-container";
 
 interface InsightsContainerProps {
   tiktokStatistics: Statistic[];

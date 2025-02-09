@@ -11,12 +11,12 @@ import { KeyStatisticsData, Statistic } from "@/lib/types/statistics";
 import { DataPoint, HeatmapData } from "@/lib/types/charts";
 
 import { fetchBaseData } from "@/app/api-lib/utils/fetchBaseData";
-import CreatorInfo from "@/app/client/components/organisms/creator-info/creator-info";
-import KeyStatistics from "@/app/client/components/organisms/key-statistics/key-statistics";
-import HeaderTabs from "@/app/client/components/organisms/header-tabs/header-tabs";
-import AccountInfo from "@/app/client/components/organisms/account-info/account-info";
-import Chart from "@/app/client/components/organisms/chart/chart";
-import PostingHeatmap from "@/app/client/components/organisms/posting-heatmap/posting-heatmap";
+import CreatorInfo from "@/components/organisms/creator-info/creator-info";
+import KeyStatistics from "@/components/organisms/key-statistics/key-statistics";
+import HeaderTabs from "@/components/organisms/header-tabs/header-tabs";
+import AccountInfo from "@/components/organisms/account-info/account-info";
+import Chart from "@/components/organisms/chart/chart";
+import PostingHeatmap from "@/components/organisms/posting-heatmap/posting-heatmap";
 
 export default function HomePage() {
   const [infoData, setInfoData] = useState<CreatorInfoData | null>(null);
@@ -55,6 +55,8 @@ export default function HomePage() {
         setError(
           err instanceof Error ? err.message : "An unknown error occurred"
         );
+
+        return error;
       }
     }
 
@@ -82,7 +84,9 @@ export default function HomePage() {
         </>
       )}
 
-      {activeTab !== "Account info" && <> Oops! This tab doesn't exist yet. </>}
+      {activeTab !== "Account info" && (
+        <h1> Oops! This tab doesn't exist yet. </h1>
+      )}
     </div>
   );
 }

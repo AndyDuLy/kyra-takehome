@@ -12,8 +12,8 @@ import {
   dynamicRectangleStyling,
 } from "@/lib/utils/heatmap-utils";
 
-import PillContainer from "@/app/client/components/molecules/pill-container/pill-container";
-import RowContainer from "@/app/client/components/atoms/row-container/row-container";
+import PillContainer from "@/components/molecules/pill-container/pill-container";
+import RowContainer from "@/components/atoms/row-container/row-container";
 
 interface PostingHeatmapProps {
   data: HeatmapData;

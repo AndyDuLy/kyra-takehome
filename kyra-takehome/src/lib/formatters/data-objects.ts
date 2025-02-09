@@ -9,11 +9,24 @@ import {
 import { CreatorInfoData } from "@/lib/types/creator-info";
 import { KeyStatisticsData, Statistic } from "@/lib/types/statistics";
 import { DataPoint, HeatmapData, HeatmapDataPoint } from "@/lib/types/charts";
-import { formatDateNoYear } from "@/lib/formatters/dates";
+import { formatDateNoYear, formatDateAsDateType } from "@/lib/formatters/dates";
 import { countries } from "@/lib/consts/countries";
 import { languages } from "@/lib/consts/languages";
 
-export function formatCreatorInfoData(data: any) {
+export function formatCreatorInfoData(data: {
+  data: {
+    tiktok: {
+      profilePicture: string;
+      nickname: string;
+      region: string;
+      language: string;
+      handle: string;
+      bio: string;
+    };
+    instagram: { handle: string };
+    youtube: { channelId: string };
+  };
+}) {
   const creatorInfoData: CreatorInfoData = {
     src: data.data?.tiktok?.profilePicture || "",
     name: data.data?.tiktok?.nickname || "",
@@ -32,7 +45,12 @@ export function formatCreatorInfoData(data: any) {
   return creatorInfoData;
 }
 
-export function formatKeyStatisticsData(data: any) {
+export function formatKeyStatisticsData(data: {
+  predictedFee?: number;
+  kyraFee?: number;
+  kyraCPV?: number;
+  predictedCpv?: number;
+}) {
   // TODO: confirm trunc or mockup fee was flat by chan
   const predictedFee = formatNumberTruncateDecimals(data.predictedFee || 0);
 
@@ -58,7 +76,29 @@ export function formatKeyStatisticsData(data: any) {
   return keyStatisticsData;
 }
 
-export function formatTiktokInsightsData(baseData: any, trendData: any) {
+export function formatTiktokInsightsData(
+  baseData: {
+    data: {
+      tiktok: {
+        followersCount: number;
+        medianViews: number;
+        sponsoredMedianViews: number;
+        likesCount: number;
+        engagementRate: number;
+        postsCount: number;
+      };
+    };
+  },
+  trendData: {
+    data: {
+      delta: {
+        followersCount: { percentage: number };
+        likesCount: { percentage: number };
+        postsCount: { absolute: number };
+      };
+    };
+  }
+) {
   const insightsData: Statistic[] = [
     {
       type: "Followers",
@@ -102,7 +142,18 @@ export function formatTiktokInsightsData(baseData: any, trendData: any) {
   return insightsData;
 }
 
-export function formatInstagramInsightsData(baseData: any, trendData: any) {
+export function formatInstagramInsightsData(baseData: {
+  data: {
+    instagram: {
+      followersCount: number;
+      medianViews: number;
+      sponsoredMedianViews: number;
+      likesCount: number;
+      engagementRate: number;
+      postsCount: number;
+    };
+  };
+}) {
   const insightsData: Statistic[] = [
     {
       type: "Followers",
@@ -144,41 +195,57 @@ export function formatInstagramInsightsData(baseData: any, trendData: any) {
   return insightsData;
 }
 
-export function formatChartData(data: any) {
-  let historyPoints: DataPoint[] = [];
+export function formatChartData(data: {
+  historyPoints: {
+    createdAt: string;
+    likesCount: number;
+    followersCount: number;
+  }[];
+}) {
+  const historyPoints: DataPoint[] = [];
 
-  data.historyPoints.map((point: any) => {
-    let currentDataPoint: DataPoint = {
-      date: formatDateNoYear(point.createdAt),
-      likesCount: point.likesCount,
-      followersCount: point.followersCount,
-    };
+  data.historyPoints.map(
+    (point: {
+      createdAt: string;
+      likesCount: number;
+      followersCount: number;
+    }) => {
+      const currentDataPoint: DataPoint = {
+        date: formatDateNoYear(point.createdAt),
+        likesCount: point.likesCount,
+        followersCount: point.followersCount,
+      };
 
-    historyPoints.push(currentDataPoint);
-  });
+      historyPoints.push(currentDataPoint);
+    }
+  );
 
   return historyPoints;
 }
 
-export function formatHeatmapData(data: any) {
-  let heatmapDataPoints: HeatmapDataPoint[] = [];
+export function formatHeatmapData(data: {
+  historyPoints: { createdAt: string; postsCount: number }[];
+}) {
+  const heatmapDataPoints: HeatmapDataPoint[] = [];
 
-  let lastPostedOn = data.historyPoints.find(
-    (point: any) => point.postsCount > 0
+  const lastPostedOn = data.historyPoints.find(
+    (point: { createdAt: string; postsCount: number }) => point.postsCount > 0
   )?.createdAt;
 
-  data.historyPoints.map((point: any) => {
+  data.historyPoints.map((point: { createdAt: string; postsCount: number }) => {
     heatmapDataPoints.push({
-      date: point.createdAt,
+      date: formatDateAsDateType(point.createdAt),
       count: point.postsCount,
     });
   });
 
   const heatmapData: HeatmapData = {
-    startDate: data.historyPoints[0].createdAt,
-    endDate: data.historyPoints[data.historyPoints.length - 1].createdAt,
+    startDate: formatDateAsDateType(data.historyPoints[0].createdAt),
+    endDate: formatDateAsDateType(
+      data.historyPoints[data.historyPoints.length - 1].createdAt
+    ),
     points: heatmapDataPoints,
-    lastPostedOn: lastPostedOn,
+    lastPostedOn: formatDateAsDateType(lastPostedOn || ""),
   };
 
   return heatmapData;

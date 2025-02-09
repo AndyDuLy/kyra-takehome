@@ -17,8 +17,8 @@ import { options } from "@/lib/consts/charts";
 import { DataPoint } from "@/lib/types/charts";
 import { createChartData } from "@/lib/utils/chart-utils";
 
-import Card from "@/app/client/components/atoms/card/card";
-import PillContainer from "@/app/client/components/molecules/pill-container/pill-container";
+import Card from "@/components/atoms/card/card";
+import PillContainer from "@/components/molecules/pill-container/pill-container";
 
 ChartJS.register(
   CategoryScale,
@@ -46,9 +46,10 @@ const Chart: React.FC<ChartProps> = ({ chartData }) => {
       <PillContainer
         iconName="tiktok"
         variant="secondary"
-        children="Tiktok data only"
         className={styles.pillContainer}
-      />
+      >
+        Tiktok data only
+      </PillContainer>
 
       <Line data={data} options={options} />
     </Card>
